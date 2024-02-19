@@ -43,7 +43,7 @@ To see how this view looks in action, refer to the `ContentView` in the `Preview
 
 Feel free to explore and modify the code to fit your project requirements.
 
-!(ScreenView)[https://github.com/omidshz100/screenshots/blob/744f92832c1fc5dc3dabadc98087837da992e286/GlassBackgroundEffect_5.png]
+![ScreenView](https://github.com/omidshz100/screenshots/blob/744f92832c1fc5dc3dabadc98087837da992e286/GlassBackgroundEffect_5.png)
 
 
 
