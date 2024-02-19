@@ -15,7 +15,7 @@ struct Home: View {
     
     var body: some View {
         VStack{
-            VStack{
+            VStack(spacing:12){
                 Text("Wellcome")
                     .font(.title.bold())
                 
@@ -50,7 +50,11 @@ struct Home: View {
                             .fontWeight(.semibold)
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 10)
-                            .background(Color.white.opacity(0.2))
+                        // adding transparent Blur
+                            .background{
+                                TransparentBlurView(removeAllFilter: false)
+                                    .backgroundStyle(Color.white.opacity(0.2))
+                            }
                             .clipShape(.rect(cornerRadius: 8, style: .continuous))
                     })
                     
@@ -61,20 +65,58 @@ struct Home: View {
                             .fontWeight(.semibold)
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 10)
-                            .background(Color.white.opacity(0.2))
+                            .background{
+                                TransparentBlurView(removeAllFilter: false)
+                                    .backgroundStyle(Color.white.opacity(0.2))
+                            }
                             .clipShape(.rect(cornerRadius: 8, style: .continuous))
                     })
                 }
                 .padding(.top, 15)
             }
+            .foregroundColor(Color.white)
             .padding(.horizontal, 30)
             .padding(.top, 35)
             .padding(.bottom, 25)
+            .background{
+                TransparentBlurView(removeAllFilter: true)
+                    .blur(radius: 9, opaque: true)
+                    .background(Color.white.opacity(0.02))
+            }
+            .clipShape( .rect(cornerRadius: 25, style: .continuous)  )
+            .background{
+                // light white border
+                RoundedRectangle(cornerRadius: 25, style: .continuous)
+                    .stroke( Color.white.opacity(0.3),lineWidth: 1.5)
+            }
+            // adding shadow
+            .shadow(color: .black.opacity(0.2), radius: 10)
+            .padding(.horizontal, 40)
+            .background{
+                ZStack{
+                    Circle()
+                        .fill(LinearGradient(colors: [Color("Gradient1") ,Color("Gradient2")], startPoint: .top, endPoint: .bottom))
+                        .frame(width: 140, height: 140)
+                        .frame(maxWidth:.infinity, maxHeight: .infinity, alignment: .topLeading )
+                        .offset(x: -25, y: -55)
+                    
+                    Circle()
+                        .fill(LinearGradient(colors: [Color("Gradient3") ,Color("Gradient4")], startPoint: .top, endPoint: .bottom))
+                        .frame(width: 140, height: 140)
+                        .frame(maxWidth:.infinity, maxHeight: .infinity, alignment: .bottomTrailing )
+                        .offset(x: 25, y: 55)
+                }
+                
+            }
+            
         }
+        //.padding(.horizontal, 40)
+        // the 395 is only for iPad friendly size
+        .frame(maxWidth: 395)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background{
             Rectangle()
-                .fill(.black)
+                .fill(.BG)
                 .ignoresSafeArea()
         }
     }
@@ -88,6 +130,7 @@ struct Home: View {
                 TextField(hint, text: value)
             }
         }
+        .environment(\.colorScheme, .dark)
         .padding(.vertical, 10)
         .padding(.horizontal, 15)
         .background(.white.opacity(0.12))
