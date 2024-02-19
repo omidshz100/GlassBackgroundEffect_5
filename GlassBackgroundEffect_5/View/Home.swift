@@ -73,7 +73,7 @@ struct Home: View {
                     })
                 }
                 .padding(.top, 15)
-            }
+            }// Vstack
             .foregroundColor(Color.white)
             .padding(.horizontal, 30)
             .padding(.top, 35)
@@ -115,8 +115,13 @@ struct Home: View {
         .frame(maxWidth: 395)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background{
-            Rectangle()
-                .fill(.BG)
+//            Rectangle()
+//                .fill(.BG)
+//                .ignoresSafeArea()
+            
+            Image("newzland")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
                 .ignoresSafeArea()
         }
     }
